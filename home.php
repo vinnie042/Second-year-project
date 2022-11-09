@@ -1,196 +1,81 @@
+<?php
+
+include "header.php";
+
+?>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>House Rental Project </title>
+    <title>All Adverts</title>
 
     <link rel="stylesheet" href="styles/general.css">
-    <link rel="stylesheet" href="styles/header.css">
+    <!-- <link rel="stylesheet" href="styles/header.css"> -->
     <link rel="stylesheet" href="styles/video.css">
-    <link rel="stylesheet" href="styles/sidebar.css">
+	<link rel="stylesheet" href="overlay.css">
     <script src="script.js"></script>
   </head>
   <body>
-  <!-- <div class="fixed-header">
-    <div class="header">
-      <nav>
-        <a href="#Home">Home</a>
-        <a href="login.html">Login</a>
-        <a href="register.html">Register</a>
-        <a href="register1.php">Search</a>
-        <a href="#Gallery">About Us</a>
-        <a href="#Contacts">Contact Us</a>
-      </nav>
-    </div>
-    </div>
-    <nav class="sidebar">
-      <div class="sidebar-link">
-        <img src="icons/home.svg">
-        <div>Home</div>
-      </div>
-      <div class="sidebar-link">
-        <img src="icons/explore.svg">
-        <div>Explore</div>
-      </div>
-      <div class="sidebar-link">
-        <img src="icons/subscriptions.svg">
-        <div>Search</div>
-      </div> -->
-      <!-- <div class="sidebar-link">
-        <img src="icons/originals.svg">
-        <div>Originals</div>
-      </div>
-      <div class="sidebar-link">
-        <img src="icons/youtube-music.svg">
-        <div>YouTube Music</div>
-      </div>
-      <div class="sidebar-link">
-        <img src="icons/library.svg">
-        <div>Library</div>
-      </div> -->
-    </nav>
-
     <main>
-      <section class="house-grid1">
+        <section class="house-grid1" style="margin-top: 90px; margin-bottom:60px">
+        <?php
+          include "owners/config.php";
+          $query = "SELECT * FROM advert ";
+          $data = mysqli_query($conn,$query);
+          $total = mysqli_num_rows($data);
+          // $result1 = mysqli_fetch_assoc($result);
+
+          if($total != 0){
+          while($result = mysqli_fetch_assoc($data)){
+                ?>
+
+
         <div class="house-preview">
-          <div class="house-row">
-          <img class="thumbnail" src="thumbnails/thumbnail-1.jpg">
-          </div>
-           
-            <!-- <div class="video-time">14:20</div> -->
-          <div class="house-grid">
-            <div class="house-picture">
-              <img class="profile-picture" src="channel-pictures/channel-1.jpeg">
+            <div class="house-row">
+            <a href="viewprop.php?id=<?php echo $result['id']?>">
+              <img class="thumbnail" src="owners/img/<?php echo  $result['house'] ?>" >
+            </a>
+            </div>
+            <div class="house-grid">
+                <div class="house-picture">
+                   <img class="profile-picture" src="profile.jpeg" >
+                     <!-- <div class="content">
+                        <p>Contact owner</p>
+                     <button class="button" type="submit"><a href="contact1.php?id=$result[id]">contact</a></button>
+                   </div> -->
               </div>
-            <div class="house-info">
-              <p class="house-title">
-                A brand new 3 Bedroom House 
-              </p>
-              <p class="house-owner">
-                Owned by Alex Junior
-              </p>
-              <p class="house-state">
-                 &#183; Available for sale or Rent
-              </p>
+                <div class="house-info">
+                    <p class="house-title">
+                        <?php echo $result['description'] ,str_repeat('&nbsp;',5)?> owned by:<?php echo $result['username']?>✔
+                    </p>
+                    <p class="house-state" style="margin-top: 15px;">
+                     City:<?php echo $result['city'] ,str_repeat('&nbsp;',5)?> location: <?php echo $result['location'] ,str_repeat('&nbsp;',5)?> 
+                     <!-- <button style="margin-left:250px,"><a href="viewprop.php?id=<?php echo $result['id']?>" >Owner</a></button> -->
+                    </p>
+                    <p class="house-state" style="margin-top: 15px;">
+                      <?php echo $result['status'] ,str_repeat('&nbsp;',5) ?> Price:<?php echo $result['price'] ,str_repeat('&nbsp;',5) ?> 
+                    </p>
+                    
+                </div>
             </div>
-          
         </div>
-        </div>
-
-        <div class="house-preview">
-          <div class="house-row">
-            <img class="thumbnail" src="thumbnails/vin2.jpg">
-            <!-- <div class="video-time">8:22</div> -->
-          </div>
-          <div class="house-grid">
-            <div class="house-picture">
-              <img class="profile-picture" src="channel-pictures/channel-2.jpeg">
-            </div>
-            <div class="house-info">
-              <p class="house-title">
-                A newly constructed house 
-              </p>
-              <p class="house-owner">
-                Owned by Junior Jr
-              </p>
-              <p class="house-state">
-               &#183; Available for slae
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="house-preview">
-          <div class="house-row">
-            <img class="thumbnail" src="thumbnails/thumbnail-3.jpg">
-            <!-- <div class="video-time">9:13</div> -->
-          </div>
-          <div class="house-grid">
-            <div class="house-picture">
-              <img class="profile-picture" src="channel-pictures/channel-3.jpeg">
-            </div>
-            <div class="house-info">
-              <p class="house-title">
-                5 refurbished offices
-              </p>
-              <p class="house-owner">
-                Owned by Kenya pharmacy 
-              </p>
-              <p class="house-state">
-                 &#183; Available for rent
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="house-preview">
-          <div class="house-row">
-            <img class="thumbnail" src="thumbnails/thumbnail-4.jpg">
-            <!-- <div class="video-time">22:09</div> -->
-          </div>
-          <div class="house-grid">
-            <div class="house-picture">
-              <img class="profile-picture" src="channel-pictures/channel-4.jpeg">
-            </div>
-            <div class="house-info">
-              <p class="house-title">
-               A 2 bedroom house 
-              </p>
-              <p class="house-owner">
-                owned by Vincent Mwanzia
-              </p>
-              <p class="house-state">
-                &#183; Available for sale 
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="house-preview">
-          <div class="house-row">
-            <img class="thumbnail" src="thumbnails/thumb1.jpg">
-            <!-- <div class="video-time">11:17</div> -->
-          </div>
-          <div class="house-grid">
-            <div class="house-picture">
-              <img class="profile-picture" src="channel-pictures/channel-5.jpeg">
-            </div>
-            <div class="house-info">
-              <p class="house-title">
-               A single room 
-              </p>
-              <p class="house-owner">
-                Owned by Ernest Junet
-              </p>
-              <p class="house-state">
-                 &#183; Available for rent
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="house-preview">
-          <div class="house-row">
-            <img class="thumbnail" src="thumbnails/thumbnail-6.jpg">
-            <!-- <div class="video-time">11:17</div> -->
-          </div>
-          <div class="house-grid">
-            <div class="house-picture">
-              <img class="profile-picture" src="channel-pictures/channel-5.jpeg">
-            </div>
-            <div class="house-info">
-              <p class="house-title">
-               A single room 
-              </p>
-              <p class="house-owner">
-                Owned by Ernest Junet
-              </p>
-              <p class="house-state">
-                 &#183; Available for rent
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+        <?php
+			// echo  $result['username'];
+		}
+		}
+		else{
+			echo "no records";
+		}
+		?>
+        </section>
     </main>
+    <center>
+    <div class="footer" style="margin-bottom: 0%;" >
+      <div class="footer1">
+          <p>Created by Vincent Mwanzia</p>
+          &copy;2022 Second Year project
+          <!-- <button><a href="header.php"></a></button> -->
+      </div>
+    </div>
+    </center>
   </body>
 </html>

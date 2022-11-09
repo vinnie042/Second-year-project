@@ -8,12 +8,13 @@ include "header.php"
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
-     <link rel="stylesheet" href="styl.css">
+     <link rel="stylesheet" href="contact.css">
 </head>
 <body>
+    <center>
     <section id="Contact">
         <div class="container">
-            <h3>Contact Us</h3>
+            <center><h3>Contact Us</h3></center>
             <p>
                 Please send any comments, feedback or queries in the form below
             </p>
@@ -23,11 +24,12 @@ include "header.php"
                 <input type="email" name="_replyto" placeholder="Enter your email" id="">
                 <textarea name="message" id="" placeholder="Enter message" cols="10" rows="10"></textarea>
                 <button>Send</button>
-                <input type="hidden" name="_confirmation" value="Thank you for contacting Us!">
+                <!-- <input type="hidden" name="_confirmation" value="Thank you for contacting Us!"> -->
             </fieldset>
             </form>
         </div>
 
     </section>
+    </center>
 </body>
 </html>

@@ -1,50 +1,38 @@
+
 <?php
-include "header.php"
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="../styles/register.css">
-   <script src="script.js"></script>
-    <title>Register</title>
-    <!-- <script>
-    function validate(){
-  var a = document.getElementById("password").value;
-  var b = document.getElementById("confirm_password").value;
-  var error = document.getElementById("error")
-  if (a!=b) {
-      error.innerHTML = "<span style='color:red;font-size:x-large'>"+
-              "Passwords don`t match</span>"
-      // document.location.reload(true)
-     return false;
-  }
+session_start();
+include "authen.php";
+include "database.php"; 
+if(isset($_POST['cpass'])) {
+    $currentpass = md5($_POST['cpassword']) ;
+    $newpass = md5($_POST['npassword']);
+    $cnewpass = md5($_POST['cnpassword']);
+    $currentpass = addslashes($currentpass);
+    $newpass = addslashes($newpass);
+    $cnewpass = addslashes($cnewpass); 
+    $currentpass = mysqli_real_escape_string($con, $currentpass);
+    $newpass = mysqli_real_escape_string($con, $newpass);
+    $cnewpass = mysqli_real_escape_string($con, $cnewpass);
+    
+$sql =  mysqli_query($con, 'SELECT password FROM loginusers WHERE username="'.$_SESSION['SESS_NAME'].'" ');
+$row = mysqli_fetch_assoc($sql);
+$pass = $row['password'];
+if ($currentpass != $pass) {
+    $error = "<center><h4><font color='#FF0000'>Incorrect Current Password!</h4></center></font>";
+    include ("changepassword.php");
 }
-    </script> -->
-</head>
-<body>
-<center >
-<div class="container" style="margin-top: 30px;">
-    <div class="form_card">
-        <div >
-            <h2> REGISTER</h2>
-
-         <form name="form" onsubmit="return checkInputs()" action="registration.php" method="post">  
-                <input type="text" name="username"class="form_input" required placeholder="Username"><br>
-                <input type="text" name="firstname"class="form_input" required placeholder="Firstname"><br>
-                <span id="error"></span>
-                <input type="email" name="email"class="form_input" required placeholder="Email"><br>
-            <div class="butt1">
-                <button type="submit"  id="button">Submit</button>
-                <button type="reset"  id="button">Clear</button>
-            </div>
-        </form>
-        </div>
-    </div>
-</div>
-</center>
-
-</body>
-</html>
+else if ($currentpass == $pass && $newpass == $cnewpass){
+$sql1 = mysqli_query($con, 'UPDATE loginusers SET password="'. md5($_POST['npassword']).'" WHERE username="'.$_SESSION['SESS_NAME'].'" ');
+$error = "<center><h4><font color='green'>Password successfully changed!</h4></center></font>";
+include ("changepassword.php");
+}
+else {
+    $error = "<center><h4><font color='#FF0000'>New Password and Confirm Password does not match!</h4></center></font>";
+    include ("changepassword.php");
+}
+}
+else {
+    $error = "<center><h4><font color='#FF0000'>Error!</h4></center></font>";
+    include ("changepassword.php");
+}
+?>

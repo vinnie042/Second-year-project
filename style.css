@@ -6,6 +6,11 @@
 }
 body{
   min-height: 100vh;
+  text-rendering: optimizeSpeed;
+}
+html{
+  scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 nav{
   position: fixed;
@@ -13,7 +18,7 @@ nav{
   left: 0;
   width: 100%;
   height: 100%;
-  height: 75px;
+  height: 80px;
   background: beige;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   z-index: 99;
@@ -25,13 +30,13 @@ nav .navbar{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: auto;
+  /* margin: 30px; */
   /* background: red; */
   padding: 0 50px;
 }
 .navbar .logo a{
   font-size: 30px;
-  color: rgb(0, 0, 0);
+  color: black;
   text-decoration: none;
   font-weight: 600;
 }
@@ -135,7 +140,7 @@ nav .navbar .links li:hover .js-sub-menu{
   top: 80px;
   height: 60px;
   width: 300px;
-  /* background: #000000; */
+  background: #000000;
   border-radius: 6px;
   opacity: 0;
   pointer-events: none;
@@ -152,7 +157,7 @@ nav .navbar .links li:hover .js-sub-menu{
   position: absolute;
   height: 20px;
   width: 20px;
-  background: #000000;
+  background: #3E8DA8;
   right: 10px;
   top: -6px;
   transform: rotate(45deg);
@@ -161,7 +166,7 @@ nav .navbar .links li:hover .js-sub-menu{
   position: absolute;
   top: 50%;
   left: 50%;
-  border-radius: 2px;
+  border-radius: 4px;
   transform: translate(-50%, -50%);
   height: 35px;
   width: 280px;
@@ -195,7 +200,7 @@ nav .navbar .links li:hover .js-sub-menu{
 }
 @media (max-width:800px){
   nav{
-    /* position: relative; */
+    padding: 0 25px;
   }
   .navbar .bx-menu{
     display: block;
@@ -266,10 +271,8 @@ nav .navbar .links li .sub-menu li{
     display: none;
   }
   .navbar .links li .sub-menu .more span{
-    /* background: red; */
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
   }
 
   .links li .sub-menu .more:hover .more-sub-menu{
@@ -299,119 +302,15 @@ nav .navbar .links li .sub-menu li{
 }
 .bgimage{
     height: 100vh;
-    background:  url("hom.jpg") no-repeat fixed bottom;
+    /* width: 100%; */
+    /* height: 100%; */
+    background:  url("profileapar.jpg") no-repeat fixed bottom;
     background-size: cover;
     position: relative;
-   margin-top: 100px;
+    margin-top: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .imgbac{
    margin-bottom: 20px;
 }
-/* Demo CSS - You do not need this css in your own slider */
-
-body{
-	font-family: "Open Sans", helvetica, arial;
-}
-
-pre{
-	font-family: "Source Code Pro", monospace;
-	display: block;
-	padding: 9.5px;
-	margin: 0 0 10px;
-	font-size: 13px;
-	line-height: 20px;
-	word-break: break-all;
-	word-wrap: break-word;
-	white-space: pre;
-	white-space: pre-wrap;
-	background-color: whiteSmoke;
-	border: 1px solid #CCC;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-}
-
-h2{
-	font-size: 48px;
-}
-
-pre + h2{
-	margin-top: 80px;
-}
-
-#container{
-	max-width:620px;
-	margin:0 auto;
-	padding-bottom:80px;
-}
-
-#banner-fade,
-#banner-slide{
-	margin-bottom: 60px;
-}
-
-ul.bjqs-controls.v-centered li a{
-	display:block;
-	padding:10px;
-	background:#fff;
-	color:#000;
-	text-decoration: none;
-}
-
-ul.bjqs-controls.v-centered li a:hover{
-	background:#000;
-	color:#fff;
-}
-
-ol.bjqs-markers li a{
-	padding:5px 10px;
-	background:#000;
-	color:#fff;
-	margin:5px;
-	text-decoration: none;
-}
-
-ol.bjqs-markers li.active-marker a,
-ol.bjqs-markers li a:hover{
-	background: #999;
-}
-
-p.bjqs-caption{
-	background: rgba(255,255,255,0.5);
-}
-
-.content_wrapper{
-  width:1000px;
-  
-  margin:auto;
-  background:black;
-  }
-  
-  #content_area{
-  width:800px;
-  height: auto;
-  float:right;
-  background:url(content3.jpg);
-  background-size:cover;
-  color:black;
-  font-size:14px;
-  text-shadow: 1px 1px white;
-  text-decoration: bold;
-  font-family: Arial;
-  }
-  /* Basic jQuery Slider essential styles */
-
-ul.bjqs{position:relative; list-style:none;padding:0;margin:0;overflow:hidden; display:none;}
-li.bjqs-slide{position:absolute; display:none;}
-ul.bjqs-controls{list-style:none;margin:0;padding:0;z-index:9999;}
-ul.bjqs-controls.v-centered li a{position:absolute;}
-ul.bjqs-controls.v-centered li.bjqs-next a{right:0;}
-ul.bjqs-controls.v-centered li.bjqs-prev a{left:0;}
-ol.bjqs-markers{list-style: none; padding: 0; margin: 0; width:100%;}
-ol.bjqs-markers.h-centered{text-align: center;}
-ol.bjqs-markers li{display:inline;}
-ol.bjqs-markers li a{display:inline-block;}
-p.bjqs-caption{display:block;width:96%;margin:0;padding:2%;position:absolute;bottom:0;}
-
-  
-  

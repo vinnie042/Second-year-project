@@ -3,12 +3,13 @@
 $server = "localhost";
 $user = "root";
 $pass = "";
-$database = "coding";
+$database = "stock";
 
 $conn = mysqli_connect($server, $user, $pass, $database);
 
 if (!$conn) {
-    die("<script>alert('Connection Failed.')</script>");
+    echo('Connection Failed.');
 }
+else
 
 ?>
